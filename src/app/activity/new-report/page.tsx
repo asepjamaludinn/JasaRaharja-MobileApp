@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useActionState } from "react";
-import { ActivityHeader } from "@/components/layout/activity-header";
+import { TitleHeader } from "@/components/layout/title-header";
 import { BottomNavigation } from "@/components/layout/bottom-navigation";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
@@ -92,7 +92,7 @@ export default function NewReportPage() {
 
   return (
     <div className="min-h-screen bg-screenBackground flex flex-col pb-20">
-      <ActivityHeader title="New Report" />
+      <TitleHeader title="New Report" />
       <main className="flex-1 space-y-6 py-6 px-4">
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
           <div className="space-y-4">

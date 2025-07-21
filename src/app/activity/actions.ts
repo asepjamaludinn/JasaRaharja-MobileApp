@@ -1,7 +1,7 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import { newReportSchema } from "@/lib/schemas"; // Import schema
+import { newReportSchema } from "@/lib/schemas";
 
 export async function uploadReport(prevState: any, formData: FormData) {
   const date = formData.get("date");
@@ -20,30 +20,21 @@ export async function uploadReport(prevState: any, formData: FormData) {
   });
 
   if (!parsed.success) {
-    // Jika validasi gagal, kembalikan error dari Zod
     const errors = parsed.error.flatten().fieldErrors;
     return {
       success: false,
       message: "Validasi gagal. Periksa kembali input Anda.",
-      errors: errors, // Mengembalikan detail error
+      errors: errors,
     };
   }
 
   const { data } = parsed;
 
-  // Di aplikasi nyata, Anda akan mengunggah file ke layanan penyimpanan di sini
-  // Misalnya, Vercel Blob, AWS S3, dll.
   console.log(
     `Uploading file: ${data.media.name}, type: ${data.media.type}, size: ${data.media.size} bytes`
   );
-  // const uploadResult = await uploadToStorage(data.media);
-  // if (!uploadResult.success) {
-  //   return { success: false, message: "Gagal mengunggah media." };
-  // }
 
-  // Simulasikan penyimpanan data laporan
-  await new Promise((resolve) => setTimeout(resolve, 1500)); // Simulasikan penundaan jaringan
-
+  await new Promise((resolve) => setTimeout(resolve, 1500));
   console.log({
     date: data.date,
     activity: data.activity,
@@ -52,7 +43,6 @@ export async function uploadReport(prevState: any, formData: FormData) {
     mediaFileName: data.media.name,
   });
 
-  // Revalidate path jika diperlukan (misal: jika laporan ini memengaruhi daftar di halaman lain)
   revalidatePath("/activity/report-history");
 
   return { success: true, message: "Laporan berhasil dikirim! +50 poin" };

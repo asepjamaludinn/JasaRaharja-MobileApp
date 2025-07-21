@@ -24,7 +24,6 @@ export function LeaderboardCard() {
 
   return (
     <div className="relative bg-dashboardBlue rounded-3xl text-dashboardTextPrimary shadow-card overflow-hidden mx-4">
-      {/* Blue top section - explicitly rounded at top */}
       <div className="absolute top-16 left-0 w-full h-full bg-dashboardHeaderBg rounded-t-3xl z-0"></div>
       <div className="absolute top-10 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full p-3 ">
         <Image

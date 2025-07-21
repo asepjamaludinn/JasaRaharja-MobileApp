@@ -42,7 +42,6 @@ export function UploadMediaCard({
       {previewUrl ? (
         <div className="relative w-full h-64 rounded-lg overflow-hidden group flex items-center justify-center">
           {" "}
-          {/* Diubah h-40 menjadi h-64 dan ditambahkan flex centering */}
           <Image
             src={previewUrl || "/placeholder.svg"}
             alt="Media Preview"
@@ -80,7 +79,7 @@ export function UploadMediaCard({
         type="button"
         onClick={handleButtonClick}
         variant="outline"
-        className="rounded-[10px] px-6 py-2 text-screenBackground border-gray-200 hover:bg-gray-200 bg-[#77A7D1]"
+        className="rounded-[10px] px-6 py-2 text-screenBackground border-gray-200 hover:bg-dashboardBlue bg-[#77A7D1]"
       >
         Upload
       </Button>
