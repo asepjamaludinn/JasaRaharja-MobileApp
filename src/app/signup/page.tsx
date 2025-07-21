@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { User, Building, Mail, Lock } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { InputWithIcon } from "@/components/ui/input-with-icon";
+import { InputWithIcon } from "@/components/ui/inputIcon";
 
 export default function SignUpPage() {
   return (

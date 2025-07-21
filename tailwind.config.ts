@@ -21,6 +21,7 @@ const config = {
     extend: {
       boxShadow: {
         around: "0 0 30px rgba(0, 0, 0, 0.15)",
+        card: "0px 4px 15px rgba(0, 0, 0, 0.1)", // Softer shadow for cards
       },
       colors: {
         border: "hsl(var(--border))",
@@ -31,40 +32,48 @@ const config = {
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
-          button: "#0161C0",
+          button: "#0161C0", // Updated custom button color
         },
         secondary: {
-          DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
+          DEFAULT: "210 40% 96.1%",
+          foreground: "222.2 47.4% 11.2%",
         },
         destructive: {
-          DEFAULT: "hsl(var(--destructive))",
-          foreground: "hsl(var(--destructive-foreground))",
+          DEFAULT: "0 84.2% 60.2%",
+          foreground: "210 40% 98%",
         },
         muted: {
-          DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--muted-foreground))",
+          DEFAULT: "210 40% 96.1%",
+          foreground: "215.4 16.3% 46.9%",
         },
         accent: {
-          DEFAULT: "hsl(var(--accent))",
-          foreground: "hsl(var(--accent-foreground))",
+          DEFAULT: "210 40% 96.1%",
+          foreground: "222.2 47.4% 11.2%",
         },
         popover: {
-          DEFAULT: "hsl(var(--popover))",
-          foreground: "hsl(var(--popover-foreground))",
+          DEFAULT: "0 0% 100%",
+          foreground: "222.2 84% 4.9%",
         },
         card: {
-          DEFAULT: "hsl(var(--card))",
-          foreground: "hsl(var(--card-foreground))",
+          DEFAULT: "0 0% 100%",
+          foreground: "222.2 84% 4.9%",
         },
-        screenBackground: "#F3F9FF",
-        inputBackground: "#FFFFFF",
+        screenBackground: "#FFFFFF", // Main dashboard background
+        inputBackground: "#FFFFFF", // Custom input background color
+        dashboardHeaderBg: "#E9F3FA", // Header background
+        dashboardTotalPointsBg: "#FFB02E", // Total Points card background
+        dashboardBlue: "#0161C0", // Custom blue for leaderboard card
+        dashboardCardBg: "#FFFFFF", // White background for reports card
+        dashboardTextPrimary: "#282828", // Dark text
+        dashboardTextSecondary: "#555555", // Lighter text
+        dashboardIconBlue: "#0161C0", // Blue for icons
       },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
-        "2xl": "1rem",
+        "2xl": "1rem", // Custom border radius for inputs/buttons
+        "3xl": "1.5rem", // For larger rounded corners on cards
       },
       keyframes: {
         "accordion-down": {
