@@ -7,12 +7,12 @@ interface VideoPageProps {
   };
 }
 
-export default function VideoPage({ params }: VideoPageProps) {
-  const { videoId } = params;
+export default async function VideoPage({ params }: VideoPageProps) {
+  const { videoId } = await params;
 
   return (
     <div className="min-h-screen bg-screenBackground flex flex-col pb-20">
-      <TitleHeader title="Video Player" />
+      <TitleHeader title="Video Player" /> {/* Judul bisa disesuaikan */}
       <main className="flex-1 py-6 px-4 flex flex-col items-center justify-center">
         <div className="w-full max-w-2xl aspect-video bg-black rounded-xl overflow-hidden shadow-lg">
           <iframe
