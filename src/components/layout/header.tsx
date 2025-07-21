@@ -2,7 +2,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 export function DashboardHeader() {
   return (
-    <div className="flex items-center justify-between px-4 py-8 bg-dashboardHeaderBg rounded-b-3xl -mt-4 pb-8 w-full">
+    <div className="flex items-center justify-between px-4 py-8 bg-dashboardHeaderBg rounded-b-2xl -mt-4 pb-8 w-full">
       <div className="text-dashboardTextPrimary transform translate-y-4">
         <h1 className="text-2xl font-bold">Hello Cimong</h1>
         <p className="text-sm text-dashboardTextSecondary">

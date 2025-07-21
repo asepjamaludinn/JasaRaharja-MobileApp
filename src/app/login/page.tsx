@@ -1,11 +1,20 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { Mail, Lock } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
 import { InputWithIcon } from "@/components/ui/inputIcon";
 
 export default function LoginPage() {
+  const router = useRouter();
+
+  const handleLogin = () => {
+    router.push("/dashboard");
+  };
+
   return (
     <div className="flex min-h-screen items-center justify-center p-4 font-sans bg-[#F0F8FF]">
       {" "}
@@ -55,6 +64,7 @@ export default function LoginPage() {
         <Button
           type="submit"
           className="w-full h-[58px] rounded-[25px] bg-primary-button font-light text-white text-lg shadow-md hover:bg-primary-button/90"
+          onClick={handleLogin}
         >
           Log In
         </Button>

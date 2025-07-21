@@ -16,7 +16,7 @@ export default function StartPage() {
   }, [router]);
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center bg-[#0161C0] p-4">
+    <div className="flex min-h-screen flex-col items-center justify-center bg-dashboardBlue p-4">
       <div className="flex flex-col items-center space-y-6 text-white">
         <Image
           src="/images/gurujr-white.png"
