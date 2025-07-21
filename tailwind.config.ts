@@ -20,8 +20,8 @@ const config = {
     },
     extend: {
       boxShadow: {
-        around: "0 0 30px rgba(0, 0, 0, 0.15)",
-        card: "0px 4px 15px rgba(0, 0, 0, 0.1)", // Softer shadow for cards
+        around: "0 0 20px rgba(0, 0, 0, 0.2)",
+        card: "0px 4px 15px rgba(0, 0, 0, 0.1)",
       },
       colors: {
         border: "hsl(var(--border))",
@@ -32,7 +32,7 @@ const config = {
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
-          button: "#0161C0", // Updated custom button color
+          button: "#0161C0",
         },
         secondary: {
           DEFAULT: "210 40% 96.1%",
@@ -58,15 +58,17 @@ const config = {
           DEFAULT: "0 0% 100%",
           foreground: "222.2 84% 4.9%",
         },
-        screenBackground: "#FFFFFF", // Main dashboard background
-        inputBackground: "#FFFFFF", // Custom input background color
-        dashboardHeaderBg: "#E9F3FA", // Header background
-        dashboardTotalPointsBg: "#FFB02E", // Total Points card background
-        dashboardBlue: "#0161C0", // Custom blue for leaderboard card
-        dashboardCardBg: "#FFFFFF", // White background for reports card
-        dashboardTextPrimary: "#282828", // Dark text
-        dashboardTextSecondary: "#555555", // Lighter text
-        dashboardIconBlue: "#0161C0", // Blue for icons
+        screenBackground: "#FFFFFF",
+        inputBackground: "#FFFFFF",
+        dashboardHeaderBg: "#E9F3FA",
+        dashboardTotalPointsBg: "#FFB02E",
+        dashboardBlue: "#0161C0",
+        dashboardCardBg: "#FFFFFF",
+        dashboardTextPrimary: "#282828",
+        dashboardTextSecondary: "#555555",
+        dashboardIconBlue: "#0161C0",
+        bottomNavBg: "#F9F8F6",
+        placeholderSoft: "#A0A0A0",
       },
       borderRadius: {
         lg: "var(--radius)",
