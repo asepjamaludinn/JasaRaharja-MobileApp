@@ -2,16 +2,18 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { InputWithIcon } from "@/components/ui/inputIcon";
+
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { loginFormSchema, type LoginFormSchema } from "@/lib/schemas";
+import {
+  forgotPasswordSchema,
+  type ForgotPasswordFormSchema,
+} from "@/lib/schemas";
 import { useToast } from "@/hooks/use-toast";
 
-export default function LoginPage() {
-  const router = useRouter();
+export default function ForgotPasswordPage() {
   const { toast } = useToast();
 
   const {
@@ -20,52 +22,43 @@ export default function LoginPage() {
     formState: { errors, isValid, isSubmitting },
     reset,
     setError,
-  } = useForm<LoginFormSchema>({
-    resolver: zodResolver(loginFormSchema),
+  } = useForm<ForgotPasswordFormSchema>({
+    resolver: zodResolver(forgotPasswordSchema),
     mode: "onChange",
   });
 
-  const onSubmit = async (data: LoginFormSchema) => {
-    console.log("Login data submitted:", data);
+  const onSubmit = async (data: ForgotPasswordFormSchema) => {
+    console.log("Reset password data submitted:", data);
 
-    // Simulasi API call dengan kemungkinan error
+    // Simulate API call
     try {
       await new Promise((resolve, reject) => {
         setTimeout(() => {
-          if (data.email === "error@example.com") {
+          if (data.email === "notfound@example.com") {
             // Simulasi error dari backend
             reject({
-              message: "Invalid credentials",
-              errors: { email: ["Email atau password salah."] },
+              message: "User not found",
+              errors: { email: ["Email tidak terdaftar."] },
             });
-          } else if (
-            data.email === "user@example.com" &&
-            data.password === "password123"
-          ) {
-            resolve(true);
           } else {
-            reject({
-              message: "Invalid credentials",
-              errors: { root: ["Email atau password salah."] },
-            });
+            resolve(true);
           }
         }, 1500);
       });
 
       toast({
-        title: "Login Successful!",
-        description: "You have been successfully logged in.",
+        title: "Password Reset Successful!",
+        description: "Your password has been reset. You can now log in.",
         variant: "default",
       });
-      router.push("/dashboard");
       reset();
     } catch (error: unknown) {
-      console.error("Login failed:", error);
+      console.error("Password reset failed:", error);
       const errorMessage =
         (error as { message?: string })?.message ||
         "An unexpected error occurred.";
       toast({
-        title: "Login Failed",
+        title: "Password Reset Failed",
         description: errorMessage,
         variant: "destructive",
       });
@@ -79,9 +72,10 @@ export default function LoginPage() {
       ) {
         const apiErrors = (error as { errors: Record<string, string[]> })
           .errors;
+
         for (const key in apiErrors) {
           if (key in data) {
-            setError(key as keyof LoginFormSchema, {
+            setError(key as keyof ForgotPasswordFormSchema, {
               type: "server",
               message: apiErrors[key][0],
             });
@@ -109,10 +103,10 @@ export default function LoginPage() {
           />
           <div className="space-y-2 text-left pt-10">
             <h1 className="text-[32px] font-extrabold text-[#000000] tracking-tighter leading-tight">
-              Welcome Back
+              Reset Password
             </h1>
             <p className="text-sm font-normal text-[#000000]">
-              Please Sign in to continue
+              Enter your email and new password to reset.
             </p>
           </div>
         </div>
@@ -134,23 +128,18 @@ export default function LoginPage() {
           </div>
           <div>
             <InputWithIcon
-              id="password"
+              id="newPassword"
               type="password"
-              placeholder="Password"
+              placeholder="New Password"
               icon="mdi:password-outline"
               showPasswordToggle
-              {...register("password")}
+              {...register("newPassword")}
             />
-            {errors.password && (
+            {errors.newPassword && (
               <p className="text-red-500 text-sm mt-1">
-                {errors.password.message}
+                {errors.newPassword.message}
               </p>
             )}
-          </div>
-          <div className="text-sm font-normal text-right text-black pb-10">
-            <Link href="/forgot-password" className="hover:underline">
-              Forgot password?
-            </Link>
           </div>
           {errors.root?.serverError && (
             <p className="text-red-500 text-sm text-center mt-1">
@@ -162,17 +151,17 @@ export default function LoginPage() {
             className="w-full h-[58px] rounded-[25px] bg-primary-button font-light text-white text-lg shadow-md hover:bg-primary-button/90"
             disabled={isSubmitting || !isValid}
           >
-            {isSubmitting ? "Logging In..." : "Log In"}
+            {isSubmitting ? "Resetting..." : "Reset Password"}
           </Button>
         </form>
 
         <div className="text-center text-sm font-normal text-black">
-          Don&apos;t have an account?{" "}
+          Remember your password?{" "}
           <Link
-            href="/signup"
+            href="/login"
             className="font-semibold text-[#000000] hover:underline"
           >
-            Sign Up
+            Login
           </Link>
         </div>
       </div>

@@ -1,14 +1,15 @@
 import Link from "next/link";
-import type React from "react";
 import { cn } from "@/lib/utils";
+import { Icon } from "@iconify/react";
+import type { ReactElement } from "react";
 
 interface ActivityCardProps {
-  icon: React.ElementType;
+  icon: string | ReactElement;
   title: string;
   href: string;
 }
 
-export function ActivityCard({ icon: Icon, title, href }: ActivityCardProps) {
+export function ActivityCard({ icon, title, href }: ActivityCardProps) {
   return (
     <Link
       href={href}
@@ -17,10 +18,14 @@ export function ActivityCard({ icon: Icon, title, href }: ActivityCardProps) {
         "hover:bg-dashboardHeaderBg/80 transition-colors duration-200"
       )}
     >
-      <Icon className="w-24 h-24 text-dashboardIconBlue" />
+      {typeof icon === "string" ? (
+        <Icon icon={icon} className="w-24 h-24 text-dashboardIconBlue" />
+      ) : (
+        icon
+      )}
       <span className="text-lg font-semibold text-dashboardTextPrimary">
         {title}
-      </span>{" "}
+      </span>
     </Link>
   );
 }

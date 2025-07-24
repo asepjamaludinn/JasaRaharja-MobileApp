@@ -1,10 +1,11 @@
 import type React from "react";
 import type { Metadata } from "next";
 import "./globals.css";
-import { ThemeProvider } from "@/components/theme-provider";
+import { Providers } from "@/components/providers";
+import { Toaster } from "@/components/ui/toaster";
 
 export const metadata: Metadata = {
-  title: "Jasa Raharja",
+  title: "GuruJR - Jasa Raharja",
   description: "Guru-JR",
 };
 
@@ -16,9 +17,10 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+        <Providers attribute="class" defaultTheme="system" enableSystem>
           {children}
-        </ThemeProvider>
+        </Providers>
+        <Toaster />
       </body>
     </html>
   );

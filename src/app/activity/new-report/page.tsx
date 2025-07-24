@@ -1,25 +1,28 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, startTransition } from "react";
 import { useActionState } from "react";
-import { ActivityHeader } from "@/components/layout/activity-header";
+import { TitleHeader } from "@/components/layout/title-header";
 import { BottomNavigation } from "@/components/layout/bottom-navigation";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { UploadMediaCard } from "@/components/report/upload-media-card";
-import { uploadReport } from "../actions";
+import { uploadReport, type UploadReportState } from "../actions";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { newReportSchema, type NewReportFormSchema } from "@/lib/schemas";
+import { useToast } from "@/hooks/use-toast";
 
 export default function NewReportPage() {
   const [file, setFile] = useState<File | null>(null);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
-  const [serverState, formAction, isPending] = useActionState(
-    uploadReport,
-    null
-  );
+  const { toast } = useToast();
+
+  const [serverState, formAction, isPending] = useActionState<
+    UploadReportState | null,
+    FormData
+  >(uploadReport, null);
 
   const {
     register,
@@ -37,8 +40,10 @@ export default function NewReportPage() {
     setFile(selectedFile);
     if (selectedFile) {
       clearErrors("media");
+      setValue("media", selectedFile);
       setPreviewUrl(URL.createObjectURL(selectedFile));
     } else {
+      setValue("media", undefined);
       setPreviewUrl(null);
     }
   };
@@ -46,7 +51,7 @@ export default function NewReportPage() {
   const handleClearPreview = () => {
     setFile(null);
     setPreviewUrl(null);
-    setValue("media", null as any);
+    setValue("media", undefined);
     clearErrors("media");
     const fileInput = document.getElementById("media") as HTMLInputElement;
     if (fileInput) {
@@ -62,19 +67,8 @@ export default function NewReportPage() {
     };
   }, [previewUrl]);
 
-  const onSubmit = async (data: NewReportFormSchema) => {
-    const formData = new FormData();
-    formData.append("date", data.date);
-    formData.append("activity", data.activity);
-    formData.append("location", data.location);
-    formData.append("detailActivity", data.detailActivity);
-    if (file) {
-      formData.append("media", file);
-    }
-
-    const result = await formAction(formData);
-
-    if (result?.success) {
+  useEffect(() => {
+    if (serverState?.success) {
       reset();
       setFile(null);
       setPreviewUrl(null);
@@ -82,17 +76,43 @@ export default function NewReportPage() {
       if (fileInput) {
         fileInput.value = "";
       }
-    } else if (result?.message) {
+      toast({
+        title: "Report Submitted!",
+        description: serverState.message,
+        variant: "default",
+      });
+    } else if (serverState?.message && !serverState.success) {
       setError("root.serverError", {
         type: "server",
-        message: result.message,
+        message: serverState.message,
+      });
+      toast({
+        title: "Submission Failed",
+        description: serverState.message,
+        variant: "destructive",
       });
     }
+  }, [serverState, reset, setFile, setPreviewUrl, setError, toast]);
+
+  const onSubmit = async (data: NewReportFormSchema) => {
+    const formData = new FormData();
+    formData.append("date", data.date);
+    formData.append("activity", data.activity);
+    formData.append("location", data.location);
+    formData.append("detailActivity", data.detailActivity);
+
+    if (file) {
+      formData.append("media", file);
+    }
+
+    startTransition(() => {
+      formAction(formData);
+    });
   };
 
   return (
     <div className="min-h-screen bg-screenBackground flex flex-col pb-20">
-      <ActivityHeader title="New Report" />
+      <TitleHeader title="New Report" />
       <main className="flex-1 space-y-6 py-6 px-4">
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
           <div className="space-y-4">
@@ -184,7 +204,7 @@ export default function NewReportPage() {
               previewUrl={previewUrl}
               onClearPreview={handleClearPreview}
             />
-            {errors.media && (
+            {typeof errors.media?.message === "string" && (
               <p className="text-red-500 text-sm mt-1">
                 {errors.media.message}
               </p>

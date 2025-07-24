@@ -20,7 +20,7 @@ const config = {
     },
     extend: {
       boxShadow: {
-        around: "0 0 20px rgba(0, 0, 0, 0.2)",
+        around: "0 0 10px rgba(0, 0, 0, 0.3)",
         card: "0px 4px 15px rgba(0, 0, 0, 0.1)",
       },
       colors: {
@@ -35,28 +35,28 @@ const config = {
           button: "#0161C0",
         },
         secondary: {
-          DEFAULT: "210 40% 96.1%",
-          foreground: "222.2 47.4% 11.2%",
+          DEFAULT: "hsl(var(--secondary))",
+          foreground: "hsl(var(--secondary-foreground))",
         },
         destructive: {
-          DEFAULT: "0 84.2% 60.2%",
-          foreground: "210 40% 98%",
+          DEFAULT: "hsl(var(--destructive))",
+          foreground: "hsl(var(--destructive-foreground))",
         },
         muted: {
-          DEFAULT: "210 40% 96.1%",
-          foreground: "215.4 16.3% 46.9%",
+          DEFAULT: "hsl(var(--muted))",
+          foreground: "hsl(var(--muted-foreground))",
         },
         accent: {
-          DEFAULT: "210 40% 96.1%",
-          foreground: "222.2 47.4% 11.2%",
+          DEFAULT: "hsl(var(--accent))",
+          foreground: "hsl(var(--accent-foreground))",
         },
         popover: {
-          DEFAULT: "0 0% 100%",
-          foreground: "222.2 84% 4.9%",
+          DEFAULT: "hsl(var(--popover))",
+          foreground: "hsl(var(--popover-foreground))",
         },
         card: {
-          DEFAULT: "0 0% 100%",
-          foreground: "222.2 84% 4.9%",
+          DEFAULT: "hsl(var(--card))",
+          foreground: "hsl(var(--card-foreground))",
         },
         screenBackground: "#FFFFFF",
         inputBackground: "#FFFFFF",
@@ -69,22 +69,41 @@ const config = {
         dashboardIconBlue: "#0161C0",
         bottomNavBg: "#F9F8F6",
         placeholderSoft: "#A0A0A0",
+        bottomNavIconDefault: "#77A7D1",
+        leaderboardGold: "#FFB02E",
+        leaderboardSilver: "#A5A5A5",
+        leaderboardBronze: "#6D4534",
+        chart: {
+          "1": "hsl(var(--chart-1))",
+          "2": "hsl(var(--chart-2))",
+          "3": "hsl(var(--chart-3))",
+          "4": "hsl(var(--chart-4))",
+          "5": "hsl(var(--chart-5))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
-        "2xl": "1rem", // Custom border radius for inputs/buttons
-        "3xl": "1.5rem", // For larger rounded corners on cards
+        "2xl": "1rem",
+        "3xl": "1.5rem",
       },
       keyframes: {
         "accordion-down": {
-          from: { height: "0" },
-          to: { height: "var(--radix-accordion-content-height)" },
+          from: {
+            height: "0",
+          },
+          to: {
+            height: "var(--radix-accordion-content-height)",
+          },
         },
         "accordion-up": {
-          from: { height: "var(--radix-accordion-content-height)" },
-          to: { height: "0" },
+          from: {
+            height: "var(--radix-accordion-content-height)",
+          },
+          to: {
+            height: "0",
+          },
         },
       },
       animation: {
