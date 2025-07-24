@@ -30,7 +30,9 @@ export function ReportsCard() {
   if (isLoading) {
     return (
       <div className="bg-dashboardHeaderBg rounded-3xl p-6 flex items-center justify-between shadow-card mx-4 text-center">
-        <div className="flex flex-col">
+        <div className="flex flex-col items-center">
+          {" "}
+          {/* Added items-center */}
           <span className="text-sm text-dashboardTextSecondary">
             Reports Submitted
           </span>
@@ -49,7 +51,8 @@ export function ReportsCard() {
   if (error) {
     return (
       <div className="bg-red-500 text-white rounded-3xl p-6 flex items-center justify-between shadow-card mx-4 text-center">
-        <div className="flex flex-col">
+        <div className="flex flex-col items-center">
+          {" "}
           <span className="text-sm">Reports Submitted</span>
           <span className="text-xl font-bold">Error!</span>
           <span className="text-xs font-light">{error}</span>
@@ -61,14 +64,15 @@ export function ReportsCard() {
 
   return (
     <div className="bg-dashboardHeaderBg rounded-3xl p-6 flex items-center justify-between shadow-card mx-4">
-      <div className="flex flex-col">
+      <div className="flex flex-col items-center">
+        {" "}
+        {/* Added items-center */}
         <span className="text-sm text-dashboardTextSecondary">
           Reports Submitted
         </span>
         <span className="text-4xl font-bold text-dashboardTextPrimary">
           {reportsCount}
         </span>
-
         <Link href="/activity/new-report">
           <Button
             variant="outline"
