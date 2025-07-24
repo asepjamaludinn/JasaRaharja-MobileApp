@@ -27,7 +27,10 @@ function NavItem({ icon, label, href, isActive }: NavItemProps) {
         className={cn("w-10 h-10", isActive && "text-dashboardIconBlue")}
       />
       <span
-        className={cn("text-xs", isActive ? "font-semibold" : "font-medium")}
+        className={cn(
+          "text-xs whitespace-nowrap",
+          isActive ? "font-semibold" : "font-medium"
+        )}
       >
         {label}
       </span>
