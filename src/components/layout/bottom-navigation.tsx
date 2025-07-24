@@ -16,7 +16,7 @@ function NavItem({ icon, label, href, isActive }: NavItemProps) {
     <Link
       href={href}
       className={cn(
-        "flex flex-col items-center gap-1 py-2 px-3 rounded-lg transition-colors",
+        "flex flex-col items-center gap-1 py-2 px-3 rounded-lg transition-colors flex-1",
         isActive
           ? "text-dashboardIconBlue"
           : "text-bottomNavIconDefault hover:text-dashboardBlue"
@@ -28,7 +28,7 @@ function NavItem({ icon, label, href, isActive }: NavItemProps) {
       />
       <span
         className={cn(
-          "text-xs whitespace-nowrap",
+          "text-xs whitespace-nowrap text-center",
           isActive ? "font-semibold" : "font-medium"
         )}
       >
