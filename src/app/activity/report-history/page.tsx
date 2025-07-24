@@ -1,13 +1,10 @@
 import { TitleHeader } from "@/components/layout/title-header";
 import { BottomNavigation } from "@/components/layout/bottom-navigation";
 import { ReportHistoryCard } from "@/components/activity/report-history-card";
+import { getReportHistory } from "@/services/reports";
 
-export default function ReportHistoryPage() {
-  const reports = [
-    { id: 1, activity: "Sosialisasi", date: "20/07/2025" },
-    { id: 2, activity: "Sosialisasi", date: "20/07/2025" },
-    { id: 3, activity: "Sosialisasi", date: "20/07/2025" },
-  ];
+export default async function ReportHistoryPage() {
+  const reports = await getReportHistory();
 
   return (
     <div className="min-h-screen bg-screenBackground flex flex-col pb-20">

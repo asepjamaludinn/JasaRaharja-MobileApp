@@ -35,41 +35,51 @@ const config = {
           button: "#0161C0",
         },
         secondary: {
-          DEFAULT: "210 40% 96.1%",
-          foreground: "222.2 47.4% 11.2%",
+          DEFAULT: "hsl(var(--secondary))",
+          foreground: "hsl(var(--secondary-foreground))",
         },
         destructive: {
-          DEFAULT: "0 84.2% 60.2%",
-          foreground: "210 40% 98%",
+          DEFAULT: "hsl(var(--destructive))",
+          foreground: "hsl(var(--destructive-foreground))",
         },
         muted: {
-          DEFAULT: "210 40% 96.1%",
-          foreground: "215.4 16.3% 46.9%",
+          DEFAULT: "hsl(var(--muted))",
+          foreground: "hsl(var(--muted-foreground))",
         },
         accent: {
-          DEFAULT: "210 40% 96.1%",
-          foreground: "222.2 47.4% 11.2%",
+          DEFAULT: "hsl(var(--accent))",
+          foreground: "hsl(var(--accent-foreground))",
         },
         popover: {
-          DEFAULT: "0 0% 100%",
-          foreground: "222.2 84% 4.9%",
+          DEFAULT: "hsl(var(--popover))",
+          foreground: "hsl(var(--popover-foreground))",
         },
         card: {
-          DEFAULT: "0 0% 100%",
-          foreground: "222.2 84% 4.9%",
+          DEFAULT: "hsl(var(--card))",
+          foreground: "hsl(var(--card-foreground))",
         },
-        screenBackground: "#FFFFFF", // Main dashboard background
-        inputBackground: "#FFFFFF", // Custom input background color
-        dashboardHeaderBg: "#E9F3FA", // Header background
-        dashboardTotalPointsBg: "#FFB02E", // Total Points card background
-        dashboardBlue: "#0161C0", // Custom blue for leaderboard card
-        dashboardCardBg: "#FFFFFF", // White background for reports card
-        dashboardTextPrimary: "#282828", // Dark text
-        dashboardTextSecondary: "#555555", // Lighter text
-        dashboardIconBlue: "#0161C0", // Blue for icons
-        bottomNavBg: "#F9F8F6", // New: Background for bottom navigation
-        placeholderSoft: "#A0A0A0", // New: Softer placeholder text color
-        bottomNavIconDefault: "#77A7D1", // New: Default color for bottom navigation icons
+        screenBackground: "#FFFFFF",
+        inputBackground: "#FFFFFF",
+        dashboardHeaderBg: "#E9F3FA",
+        dashboardTotalPointsBg: "#FFB02E",
+        dashboardBlue: "#0161C0",
+        dashboardCardBg: "#FFFFFF",
+        dashboardTextPrimary: "#282828",
+        dashboardTextSecondary: "#555555",
+        dashboardIconBlue: "#0161C0",
+        bottomNavBg: "#F9F8F6",
+        placeholderSoft: "#A0A0A0",
+        bottomNavIconDefault: "#77A7D1",
+        leaderboardGold: "#FFB02E",
+        leaderboardSilver: "#A5A5A5",
+        leaderboardBronze: "#6D4534",
+        chart: {
+          "1": "hsl(var(--chart-1))",
+          "2": "hsl(var(--chart-2))",
+          "3": "hsl(var(--chart-3))",
+          "4": "hsl(var(--chart-4))",
+          "5": "hsl(var(--chart-5))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -80,12 +90,20 @@ const config = {
       },
       keyframes: {
         "accordion-down": {
-          from: { height: "0" },
-          to: { height: "var(--radix-accordion-content-height)" },
+          from: {
+            height: "0",
+          },
+          to: {
+            height: "var(--radix-accordion-content-height)",
+          },
         },
         "accordion-up": {
-          from: { height: "var(--radix-accordion-content-height)" },
-          to: { height: "0" },
+          from: {
+            height: "var(--radix-accordion-content-height)",
+          },
+          to: {
+            height: "0",
+          },
         },
       },
       animation: {

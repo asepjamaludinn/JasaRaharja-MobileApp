@@ -1,36 +1,88 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+![alt text](image.png)
 
-## Getting Started
+# Aplikasi Guru-JR
 
-First, run the development server:
+Aplikasi Guru-JR adalah sebuah platform Web mobile yang dirancang khusus untuk para guru yang berpartisipasi dalam program edukasi bersama Jasa Raharja. Aplikasi ini bertujuan untuk mempermudah proses pelaporan kegiatan, menyediakan materi edukasi yang relevan, serta meningkatkan keterlibatan guru melalui sistem gamifikasi (poin dan leaderboard).
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## ✨ Fitur Utama
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Berikut adalah fitur-fitur utama yang tersedia di dalam aplikasi Guru-JR:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 1. 🔑 Autentikasi & Akun Pengguna
 
-## Learn More
+Sistem autentikasi yang aman untuk memastikan data pengguna terlindungi.
 
-To learn more about Next.js, take a look at the following resources:
+- **Registrasi Akun Baru:** Pengguna dapat mendaftar dengan menginput nama, nomor HP/email, asal sekolah, dan password.
+- **Login:** Masuk ke aplikasi menggunakan nomor HP/email dan password yang terdaftar.
+- **Reset Password:** Fitur untuk mengatur ulang password jika pengguna lupa.
+- **Edit Profil:** Pengguna dapat memperbarui informasi pribadi mereka.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 2. 📝 Pelaporan Kegiatan
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Memudahkan guru untuk melaporkan setiap kegiatan edukasi yang telah dilaksanakan.
 
-## Deploy on Vercel
+- **Form Laporan:** Input data kegiatan dengan field tanggal, keterangan, dan unggah dokumentasi (foto/video).
+- **Poin Laporan:** Setiap laporan kegiatan yang berhasil dikirimkan akan memberikan **50 poin**.
+- **Riwayat Laporan:** Semua laporan yang pernah dibuat akan tersimpan dan dapat diakses kembali.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 3. 📊 Monitoring & Dashboard
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Guru dan admin Jasa Raharja dapat memantau progres dan aktivitas secara real-time.
+
+- **Dashboard Individu:** Menampilkan total laporan yang telah di-submit dan jumlah poin yang dimiliki oleh masing-masing guru.
+- **Leaderboard:** Menampilkan peringkat **Top 3 Guru** dengan perolehan poin tertinggi untuk memotivasi partisipasi.
+
+### 4. 📚 Materi Edukasi & Library
+
+Pusat sumber belajar digital bagi para guru.
+
+- **Video Edukasi:** Kumpulan video atau animasi materi yang selalu diperbarui.
+- **Poin Edukasi:** Setiap selesai menonton materi, guru akan mendapatkan **25 poin**.
+
+---
+
+## 🚀 Cara Menjalankan Proyek (Contoh)
+
+Berikut adalah langkah-langkah untuk menginstal dan menjalankan proyek ini di lingkungan pengembangan lokal.
+
+### Prasyarat
+
+Pastikan sudah menginstal perangkat lunak berikut:
+
+- Node.js (v18 atau lebih baru)
+- Yarn atau NPM
+
+### Instalasi
+
+1.  **Clone repository ini:**
+
+    ```bash
+    git clone [https://github.com/username/guru-jr.git](https://github.com/username/guru-jr.git)
+    ```
+
+2.  **Masuk ke direktori proyek:**
+
+    ```bash
+    cd guru-jr
+    ```
+
+3.  **Install semua dependency yang dibutuhkan:**
+
+    ```bash
+    npm install
+    # atau jika menggunakan yarn
+    yarn install
+    ```
+
+4.  **Menjalankan Web**
+
+    - **NPM:**
+      ```bash
+      npm run dev
+      ```
+    - **Yarn:**
+      ```bash
+      yarn run dev
+      ```
