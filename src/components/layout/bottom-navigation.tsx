@@ -16,7 +16,7 @@ function NavItem({ icon, label, href, isActive }: NavItemProps) {
     <Link
       href={href}
       className={cn(
-        "flex flex-col items-center gap-1 py-2 px-1 rounded-lg transition-colors flex-1", // Changed px-3 to px-1
+        "flex flex-col items-center gap-1 py-2 px-1 rounded-lg transition-colors flex-1",
         isActive
           ? "text-dashboardIconBlue"
           : "text-bottomNavIconDefault hover:text-dashboardBlue"
@@ -43,7 +43,6 @@ export function BottomNavigation() {
 
   return (
     <nav className="fixed bottom-0 left-0 right-0 bg-bottomNavBg border-t border-gray-200 shadow-lg px-2 py-2 flex justify-around items-center z-50">
-      {/* Keep px-2 and justify-around */}
       <NavItem
         icon="material-symbols:home-rounded"
         label="Dashboard"
