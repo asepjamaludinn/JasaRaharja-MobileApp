@@ -4,11 +4,14 @@ import { Icon } from "@iconify/react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { getLeaderboardData } from "@/services/leaderboard";
+import type { LeaderboardEntry } from "@/data/leaderboard-data";
 
 export function LeaderboardCard() {
-  const [leaderboardData, setLeaderboardData] = useState([]);
+  const [leaderboardData, setLeaderboardData] = useState<LeaderboardEntry[]>(
+    []
+  );
   const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchLeaderboard = async () => {
@@ -16,9 +19,17 @@ export function LeaderboardCard() {
         setIsLoading(true);
         const data = await getLeaderboardData();
         setLeaderboardData(data);
-      } catch (err) {
-        setError("Failed to load leaderboard data.");
+      } catch (err: unknown) {
+        // Mengubah 'any' menjadi 'unknown'
         console.error("Gagal mengambil data leaderboard:", err);
+        // Menangani error dengan lebih aman
+        if (err instanceof Error) {
+          setError(`Failed to load leaderboard data: ${err.message}`);
+        } else {
+          setError(
+            "Failed to load leaderboard data: An unknown error occurred."
+          );
+        }
       } finally {
         setIsLoading(false);
       }
@@ -77,7 +88,7 @@ export function LeaderboardCard() {
 
               <Image
                 src={item.avatar || "/placeholder.svg"}
-                alt={item.name} // Tambahkan alt prop di sini
+                alt={item.name}
                 width={45}
                 height={45}
                 className="rounded-full"

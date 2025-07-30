@@ -1,11 +1,11 @@
-export type EducationMaterial = {
+export interface EducationMaterial {
   id: number;
   title: string;
   description: string;
   videoId: string;
   thumbnailSrc: string;
   points: number;
-};
+}
 
 export const educationMaterials: EducationMaterial[] = [
   {
