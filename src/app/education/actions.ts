@@ -37,14 +37,18 @@ export async function addPoints(
   }
 
   try {
+    // TODO: Anda perlu mengimplementasikan endpoint ini di backend Anda.
+    // Endpoint ini harus menerima userId, videoId, dan points,
+    // lalu memperbarui poin pengguna di database.
+    // Backend juga harus memastikan bahwa poin hanya ditambahkan sekali per video per pengguna.
     await apiClient("/user/add-points", {
       method: "POST",
       body: { userId: currentUser.id, videoId, points },
       token: authToken,
     });
 
-    revalidatePath("/dashboard");
-    revalidatePath("/education");
+    revalidatePath("/dashboard"); // Revalidasi dashboard untuk memperbarui total poin
+    revalidatePath("/education"); // Revalidasi halaman edukasi jika perlu
     return { success: true, message: `Anda mendapatkan ${points} poin!` };
   } catch (error: unknown) {
     console.error("Gagal menambah poin:", error);
