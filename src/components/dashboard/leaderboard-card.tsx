@@ -4,14 +4,11 @@ import { Icon } from "@iconify/react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { getLeaderboardData } from "@/services/leaderboard";
-import type { LeaderboardEntry } from "@/data/leaderboard-data";
 
 export function LeaderboardCard() {
-  const [leaderboardData, setLeaderboardData] = useState<LeaderboardEntry[]>(
-    []
-  );
+  const [leaderboardData, setLeaderboardData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchLeaderboard = async () => {
@@ -39,8 +36,12 @@ export function LeaderboardCard() {
 
   if (error) {
     return (
-      <div className="relative bg-dashboardBlue rounded-3xl text-red-500 shadow-card overflow-hidden mx-4 p-6 text-center">
-        Error: {error}
+      <div className="relative bg-dashboardBlue rounded-3xl text-dashboardTextPrimary shadow-card overflow-hidden mx-4 p-6 text-center">
+        <p className="text-red-500 mb-2">Error: {error}</p>
+        <p className="text-sm">
+          Gagal memuat data leaderboard. Pastikan backend berjalan dan CORS
+          dikonfigurasi dengan benar.
+        </p>
       </div>
     );
   }
@@ -76,7 +77,7 @@ export function LeaderboardCard() {
 
               <Image
                 src={item.avatar || "/placeholder.svg"}
-                alt={item.name}
+                alt={item.name} // Tambahkan alt prop di sini
                 width={45}
                 height={45}
                 className="rounded-full"
