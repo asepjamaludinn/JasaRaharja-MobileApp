@@ -20,9 +20,8 @@ export function LeaderboardCard() {
         const data = await getLeaderboardData();
         setLeaderboardData(data);
       } catch (err: unknown) {
-        // Mengubah 'any' menjadi 'unknown'
         console.error("Gagal mengambil data leaderboard:", err);
-        // Menangani error dengan lebih aman
+
         if (err instanceof Error) {
           setError(`Failed to load leaderboard data: ${err.message}`);
         } else {
