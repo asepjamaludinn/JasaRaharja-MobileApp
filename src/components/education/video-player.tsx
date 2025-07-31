@@ -4,7 +4,6 @@ import { useEffect, useRef, useState, useCallback } from "react";
 import { addPoints } from "@/app/education/actions";
 import { useToast } from "@/hooks/use-toast";
 
-// Definisi tipe untuk YouTube Player API
 interface YouTubePlayerOptions {
   height: string;
   width: string;
@@ -29,20 +28,17 @@ interface YouTubePlayer {
   stopVideo: () => void;
   getPlayerState: () => number;
   destroy: () => void;
-  // Tambahkan properti lain yang mungkin Anda gunakan
 }
 
-// Definisi tipe untuk event YouTube Player
 interface YouTubePlayerEvent {
   target: YouTubePlayer;
-  data?: unknown; // Mengubah 'any' menjadi 'unknown'
+  data?: unknown;
 }
 
 interface YouTubeOnStateChangeEvent extends YouTubePlayerEvent {
-  data: number; // YT.PlayerState constants
+  data: number;
 }
 
-// Declare the global YT object and its properties directly on Window
 declare global {
   interface Window {
     onYouTubeIframeAPIReady: () => void;
@@ -68,13 +64,12 @@ interface VideoPlayerClientProps {
 }
 
 export function VideoPlayerClient({ videoId, points }: VideoPlayerClientProps) {
-  const playerRef = useRef<YouTubePlayer | null>(null); // Menggunakan tipe YouTubePlayer
+  const playerRef = useRef<YouTubePlayer | null>(null);
   const playerContainerRef = useRef<HTMLDivElement>(null);
   const [hasAwardedPoints, setHasAwardedPoints] = useState(false);
-  const [isPlayerApiReady, setIsPlayerApiReady] = useState(false); // Mengganti nama state agar lebih jelas
+  const [isPlayerApiReady, setIsPlayerApiReady] = useState(false);
   const { toast } = useToast();
 
-  // Muat YouTube Iframe API script
   useEffect(() => {
     if (
       typeof window !== "undefined" &&
@@ -140,13 +135,12 @@ export function VideoPlayerClient({ videoId, points }: VideoPlayerClientProps) {
     [handleAwardPoints]
   );
 
-  // Inisialisasi dan bersihkan pemutar YouTube
   useEffect(() => {
     if (!isPlayerApiReady || !playerContainerRef.current) return;
 
     const initializePlayer = () => {
       if (playerRef.current) {
-        playerRef.current.destroy(); // Hancurkan instance lama jika ada
+        playerRef.current.destroy();
       }
 
       playerRef.current = new window.YT.Player(playerContainerRef.current!, {
@@ -156,9 +150,9 @@ export function VideoPlayerClient({ videoId, points }: VideoPlayerClientProps) {
         playerVars: {
           autoplay: 0,
           controls: 1,
-          rel: 0, // Jangan tampilkan video terkait
-          showinfo: 0, // Jangan tampilkan info video
-          modestbranding: 1, // Gunakan branding YouTube yang minimal
+          rel: 0,
+          showinfo: 0,
+          modestbranding: 1,
         },
         events: {
           onReady: onPlayerReady,
