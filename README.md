@@ -59,13 +59,13 @@ Pastikan sudah menginstal perangkat lunak berikut:
 1.  **Clone repository ini:**
 
     ```bash
-    git clone [https://github.com/username/guru-jr.git](https://github.com/username/guru-jr.git)
+    git clone [https://github.com/username/JasaRaharja-MobileApp.git](https://github.com/username/JasaRaharja-MobileApp.git)
     ```
 
 2.  **Masuk ke direktori proyek:**
 
     ```bash
-    cd guru-jr
+    cd JasaRaharja-MobileApp
     ```
 
 3.  **Install semua dependency yang dibutuhkan:**
